@@ -157,7 +157,7 @@
               <!-- Sueño -->
               <div class="space-y-6">
                 <label class="text-sm font-semibold text-gray-700 uppercase tracking-wide">
-                  ¿Cuánto duermes realmente?
+                  ¿Cuántas horas duermes por noche realmente?
                 </label>
                 <div :class="['p-6 rounded-3xl', gradientSlider]">
                   <div class="text-center mb-4">
