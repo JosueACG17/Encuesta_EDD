@@ -188,6 +188,8 @@ const getConflictLevel = (level: number) => {
   return levels[level];
 }
 
+    const showSuccessModal = ref(false)
+
 const isFeminine = computed(() => formData.value.Gender === 'Femenino')
 const formWrapperClass = computed(() => isFeminine.value ? 'bg-gradient-to-br from-pink-100 via-rose-100 to-amber-50' : 'bg-gradient-to-br from-blue-100 via-indigo-100 to-cyan-50')
 const titleGradient = computed(() => isFeminine.value ? 'bg-gradient-to-r from-pink-500 to-rose-400' : 'bg-gradient-to-r from-blue-700 to-indigo-600')
@@ -246,7 +248,7 @@ const submitForm = async () => {
       console.error('❌ Error al guardar en Supabase:', error)
       alert('Hubo un error al guardar tus datos.')
     } else {
-      alert('¡Gracias! Tus datos se guardaron correctamente.')
+      showSuccessModal.value = true
       formData.value = {
         Age: null,
         Gender: '',
@@ -291,6 +293,7 @@ return {
   sliderClass,
   buttonGradient,
   getSleepComment,
-  submitForm
+  submitForm,
+  showSuccessModal
 }
 }
