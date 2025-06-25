@@ -20,21 +20,40 @@ const formData = ref({
 const errors = ref<Record<string, string>>({})
 
   const validateForm = () => {
-    const newErrors: Record<string, string> = {}
+  const newErrors: Record<string, string> = {}
 
-    if (!formData.value.Gender) newErrors.Gender = 'Selecciona un género'
-    if (!formData.value.Academic_Level) newErrors.Academic_Level = 'Selecciona tu nivel académico'
-    if (!formData.value.Country) newErrors.Country = 'Selecciona tu país'
-if (!formData.value.Age || formData.value.Age <= 0) newErrors.Age = 'Ingresa una edad válida'
-    if (!formData.value.Most_Used_Platform) newErrors.Most_Used_Platform = 'Selecciona una red social'
-    if (!formData.value.Affects_Academic_Performance) newErrors.Affects_Academic_Performance = 'Selecciona una opción'
-    if (!formData.value.Relationship_Status) newErrors.Relationship_Status = 'Selecciona una opción'
-    if (!formData.value.Sleep_Hours_Per_Night) newErrors.Sleep_Hours_Per_Night = 'Indica tus horas de sueño'
-    if (formData.value.Conflicts_Over_Social_Media == null) newErrors.Conflicts_Over_Social_Media = 'Indica la frecuencia'
-
-    errors.value = newErrors
-    return Object.keys(newErrors).length === 0
+  if (!formData.value.Gender) newErrors.Gender = 'Selecciona un género'
+  if (!formData.value.Academic_Level) newErrors.Academic_Level = 'Selecciona tu nivel académico'
+  if (!formData.value.Country) newErrors.Country = 'Selecciona tu país'
+  if (!formData.value.Age || formData.value.Age < 0 || formData.value.Age > 100) {
+    newErrors.Age = 'Ingresa una edad válida (0-100)'
   }
+  if (!formData.value.Most_Used_Platform) newErrors.Most_Used_Platform = 'Selecciona una red social'
+  if (!formData.value.Affects_Academic_Performance) newErrors.Affects_Academic_Performance = 'Selecciona una opción'
+  if (!formData.value.Relationship_Status) newErrors.Relationship_Status = 'Selecciona una opción'
+  if (
+    formData.value.Sleep_Hours_Per_Night == null ||
+    formData.value.Sleep_Hours_Per_Night < 0 ||
+    formData.value.Sleep_Hours_Per_Night > 10
+  ) {
+    newErrors.Sleep_Hours_Per_Night = 'Indica tus horas de sueño entre 0 y 10 horas'
+  }
+  if (
+    formData.value.Avg_Daily_Usage_Hours < 0 ||
+    formData.value.Avg_Daily_Usage_Hours > 10
+  ) {
+    newErrors.Avg_Daily_Usage_Hours = 'El tiempo debe estar entre 0 y 10 horas'
+  }
+  if (
+    formData.value.Conflicts_Over_Social_Media < 0 ||
+    formData.value.Conflicts_Over_Social_Media > 5
+  ) {
+    newErrors.Conflicts_Over_Social_Media = 'Elige un valor entre 0 y 5'
+  }
+
+  errors.value = newErrors
+  return Object.keys(newErrors).length === 0
+}
 
 
 const genderOptions = [{ value: 'Masculino', label: 'Masculino' }, { value: 'Femenino', label: 'Femenino' }]

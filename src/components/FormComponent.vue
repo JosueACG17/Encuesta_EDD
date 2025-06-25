@@ -215,9 +215,9 @@
                   <input v-model="formData.Sleep_Hours_Per_Night" type="range" min="0" max="10" step="0.5"
                     class="w-full h-2 rounded-full appearance-none cursor-pointer" :class="sliderClass" />
                 </div>
-              </div>
-              <div v-if="errors.Sleep_Hours_Per_Night" class="text-red-500 text-sm mt-1">{{ errors.Sleep_Hours_Per_Night
+                <div v-if="errors.Sleep_Hours_Per_Night" class="text-red-500 text-sm mt-1">{{ errors.Sleep_Hours_Per_Night
                 }}</div>
+              </div>
             </div>
           </div>
 
