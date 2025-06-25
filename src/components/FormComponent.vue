@@ -235,6 +235,36 @@
       </div>
     </div>
   </div>
+  <!-- Modal de éxito -->
+<transition
+  enter-active-class="transition duration-300 ease-out"
+  enter-from-class="opacity-0 scale-90"
+  enter-to-class="opacity-100 scale-100"
+  leave-active-class="transition duration-200 ease-in"
+  leave-from-class="opacity-100 scale-100"
+  leave-to-class="opacity-0 scale-90"
+>
+  <div
+    v-if="showSuccessModal"
+    class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
+  >
+    <div
+      class="bg-white rounded-3xl p-8 shadow-xl max-w-md w-full text-center border-t-4 transform transition duration-300 hover:scale-105 hover:shadow-2xl"
+      :class="borderAccent"
+    >
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">¡Gracias!</h2>
+      <p class="text-gray-600 mb-6">Tus datos se guardaron correctamente.</p>
+      <button
+        @click="showSuccessModal = false"
+        class="px-6 py-3 font-semibold rounded-full text-white transition-all duration-300 hover:scale-105 hover:shadow-xl"
+        :class="buttonGradient"
+      >
+        Cerrar
+      </button>
+    </div>
+  </div>
+</transition>
+
 </template>
 
 <script lang="ts" setup>
@@ -265,6 +295,7 @@ const {
   sliderClass,
   buttonGradient,
   getSleepComment,
-  submitForm
+  submitForm,
+  showSuccessModal
 } = Form()
 </script>
