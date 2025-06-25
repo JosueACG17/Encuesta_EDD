@@ -189,6 +189,8 @@ const getConflictLevel = (level: number) => {
 }
 
     const showSuccessModal = ref(false)
+    const modalMessage = ref('Tus datos se guardaron correctamente.')
+
 
 const isFeminine = computed(() => formData.value.Gender === 'Femenino')
 const formWrapperClass = computed(() => isFeminine.value ? 'bg-gradient-to-br from-pink-100 via-rose-100 to-amber-50' : 'bg-gradient-to-br from-blue-100 via-indigo-100 to-cyan-50')
@@ -217,7 +219,8 @@ const getSleepComment = (h: number) => {
 
 const submitForm = async () => {
     if (!validateForm()) {
-      alert('Por favor, completa todos los campos requeridos.')
+modalMessage.value = 'Por favor, completa todos los campos requeridos.' // NUEVO
+      showSuccessModal.value = true // NUEVO
       return
     }
 
@@ -246,8 +249,10 @@ const submitForm = async () => {
 
     if (error) {
       console.error('❌ Error al guardar en Supabase:', error)
-      alert('Hubo un error al guardar tus datos.')
+      modalMessage.value = 'Hubo un error al guardar tus datos.'
+      showSuccessModal.value = true
     } else {
+      modalMessage.value = 'Tus datos se guardaron correctamente.'
       showSuccessModal.value = true
       formData.value = {
         Age: null,
@@ -294,6 +299,7 @@ return {
   buttonGradient,
   getSleepComment,
   submitForm,
-  showSuccessModal
+  showSuccessModal,
+  modalMessage
 }
 }

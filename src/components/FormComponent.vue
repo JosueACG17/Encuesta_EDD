@@ -17,7 +17,7 @@
       </div>
 
       <!-- Formulario -->
-      <div class="relative">
+      <div class="relative overflow-hidden ">
         <div class="absolute -top-8 -right-8 w-64 h-64 rounded-full opacity-10 blur-2xl" :class="bubbleAccent" />
         <div class="absolute top-1/2 -left-12 w-48 h-48 rounded-full opacity-10 blur-2xl" :class="bubbleAccent" />
         <form @submit.prevent="submitForm" class="relative z-10 space-y-8">
@@ -235,12 +235,13 @@
       </div>
     </div>
   </div>
-  <!-- Modal de éxito -->
+
+  <!-- Modal -->
 <transition
-  enter-active-class="transition duration-300 ease-out"
+  enter-active-class="transition duration-200 ease-out"
   enter-from-class="opacity-0 scale-90"
   enter-to-class="opacity-100 scale-100"
-  leave-active-class="transition duration-200 ease-in"
+  leave-active-class="transition duration-100 ease-in"
   leave-from-class="opacity-100 scale-100"
   leave-to-class="opacity-0 scale-90"
 >
@@ -252,11 +253,11 @@
       class="bg-white rounded-3xl p-8 shadow-xl max-w-md w-full text-center border-t-4 transform transition duration-300 hover:scale-105 hover:shadow-2xl"
       :class="borderAccent"
     >
-      <h2 class="text-2xl font-bold text-gray-800 mb-4">¡Gracias!</h2>
-      <p class="text-gray-600 mb-6">Tus datos se guardaron correctamente.</p>
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">¡Aviso!</h2>
+      <p class="text-gray-600 mb-6">{{ modalMessage }}</p>
       <button
         @click="showSuccessModal = false"
-        class="px-6 py-3 font-semibold rounded-full text-white transition-all duration-300 hover:scale-105 hover:shadow-xl"
+        class="cursor-pointer px-6 py-3 font-semibold rounded-full text-white transition-all duration-300 hover:scale-105 hover:shadow-xl"
         :class="buttonGradient"
       >
         Cerrar
@@ -296,6 +297,7 @@ const {
   buttonGradient,
   getSleepComment,
   submitForm,
-  showSuccessModal
+  showSuccessModal,
+  modalMessage
 } = Form()
 </script>
