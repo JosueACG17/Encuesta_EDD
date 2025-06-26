@@ -238,15 +238,12 @@ const getSleepComment = (h: number) => {
 
 const submitForm = async () => {
     if (!validateForm()) {
-modalMessage.value = 'Por favor, completa todos los campos requeridos.' // NUEVO
-      showSuccessModal.value = true // NUEVO
+modalMessage.value = 'Por favor, completa todos los campos requeridos.'
+      showSuccessModal.value = true
       return
     }
-
     formData.value.Avg_Daily_Usage_Hours = Math.round(Number(formData.value.Avg_Daily_Usage_Hours) * 10) / 10
     formData.value.Sleep_Hours_Per_Night = Math.round(Number(formData.value.Sleep_Hours_Per_Night) * 10) / 10
-    formData.value.Mental_Health_Score = Math.round(Math.random() * 10)
-    formData.value.Addicted_Score = Math.round(Math.random() * 10)
 
     const payload = {
       age: formData.value.Age,
