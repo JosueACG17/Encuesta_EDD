@@ -1,6 +1,8 @@
 <template>
-  <h1 class="text-black">Home View</h1>
+  <FormComponent/>
 </template>
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import FormComponent from '@/components/FormComponent.vue';
+</script>
 
 <style scoped></style>
